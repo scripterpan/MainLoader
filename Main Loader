@@ -1,0 +1,58 @@
+-- Define supported place IDs
+local supportedGames = {
+    [6243699076] = "The Mimic",
+    [15532962292] = "Sol's RNG"
+}
+
+-- Get StarterGui for notifications
+local StarterGui = game:GetService("StarterGui")
+
+-- Function to send notifications
+local function sendNotification(title, text, duration)
+    StarterGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration or 5 -- Default duration is 5 seconds
+    })
+end
+
+-- Notify that the script is starting
+sendNotification("Script Initialized", "Starting game compatibility check...", 5)
+task.wait(2)
+
+-- Notify that the script is checking the Place ID
+sendNotification("Checking Place ID", "Verifying the game's compatibility with the script...", 5)
+task.wait(3)
+
+-- Check if the current game is supported
+local gameName = supportedGames[game.PlaceId]
+if gameName then
+    -- Notify that the game is supported
+    sendNotification("Game Supported", "Welcome to " .. gameName .. "! The script is loading...", 5)
+    task.wait(3)
+
+    -- Provide additional confirmation
+    sendNotification("Loading Script", "Please wait while the script initializes for " .. gameName .. ".", 5)
+    task.wait(2)
+
+    -- Execute the specific script logic
+    if game.PlaceId == 6243699076 then
+        -- The Mimic script
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/TheMimic"))()
+        -- Insert The Mimic script logic here
+        sendNotification("Script Loaded", "The Mimic script has successfully loaded. Enjoy!", 5)
+    elseif game.PlaceId == 15532962292 then
+        -- Sol's RNG script
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/SolsRNG"))()
+        -- Insert Sol's RNG script logic here
+        sendNotification("Script Loaded", "Sol's RNG script has successfully loaded. Have fun!", 5)
+    end
+
+else
+    -- Notify that the game is unsupported
+    sendNotification("Unsupported Game", "This game is unsupported, and we'll make a universal script soon!", 5)
+    task.wait(3)
+
+    -- Additional guidance for the user
+    sendNotification("What to Do Next?", "Try using this script in a supported game like The Mimic or Sol's RNG etc.", 5)
+end

@@ -1,11 +1,14 @@
--- Define supported place IDs
+-- Define supported Place IDs
 local supportedGames = {
-    [6243699076] = "The Mimic",
-    [15532962292] = "Sol's RNG"
+    [6243699076] = "The Mimic",  -- The Mimic
+    [15532962292] = "Sol's RNG"  -- Sol's RNG
 }
 
--- Get StarterGui for notifications
+-- Get services
 local StarterGui = game:GetService("StarterGui")
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 
 -- Function to send notifications
 local function sendNotification(title, text, duration)
@@ -14,6 +17,14 @@ local function sendNotification(title, text, duration)
         Text = text,
         Duration = duration or 5 -- Default duration is 5 seconds
     })
+end
+
+-- Function to execute the Mimic script
+local function executeMimicScript()
+    -- Insert the Mimic specific logic here
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/TheMimic"))()
+    sendNotification("Script Loaded", "The Mimic script has successfully loaded. Enjoy!", 5)
+    -- Additional code for the Mimic can go here
 end
 
 -- Notify that the script is starting
@@ -35,21 +46,30 @@ if gameName then
     sendNotification("Loading Script", "Please wait while the script initializes for " .. gameName .. ".", 5)
     task.wait(2)
 
-    -- Execute the specific script logic
+    -- If it's The Mimic, show the recommendation
     if game.PlaceId == 6243699076 then
-        -- The Mimic script
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/TheMimic"))()
-        -- Insert The Mimic script logic here
-        sendNotification("Script Loaded", "The Mimic script has successfully loaded. Enjoy!", 5)
+        sendNotification("Execution Recommendation", "We recommend executing the script in the lobby instead of in-game due to bugs right now.", 7)
+        task.wait(3)
+
+        -- Check if it's the first time entering the game
+        local firstExecution = player:HasEnteredPlace(6243699076) == false
+        if firstExecution then
+            -- Queue the function for teleportation (auto-execute)
+            sendNotification("Auto Execution", "Executing script for The Mimic automatically...", 5)
+            -- Trigger the script execution function after teleport
+            TeleportService:Teleport(6243699076, player)  -- Teleport to the same game and auto-execute
+            task.wait(1)
+            executeMimicScript()
+        else
+            -- If not the first execution, just execute the script
+            executeMimicScript()
+        end
+    -- Execute Sol's RNG script
     elseif game.PlaceId == 15532962292 then
-        -- Sol's RNG script
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/SolsRNG"))()
-        -- Insert Sol's RNG script logic here
         sendNotification("Script Loaded", "Sol's RNG script has successfully loaded. Have fun!", 5)
-
-    
+        -- Insert Sol's RNG script logic here
     end
-
 else
     -- Notify that the game is unsupported
     sendNotification("Unsupported Game", "This game is unsupported, and we'll make a universal script soon!", 5)

@@ -1,6 +1,7 @@
 local supportedGames = {
     [6243699076] = "The Mimic",
-    [15532962292] = "Sol's RNG"
+    [15532962292] = "Sol's RNG",
+    [9772878203] = "Raise A Floppa 2"
 }
 
 local StarterGui = game:GetService("StarterGui")
@@ -34,6 +35,9 @@ if gameName then
     elseif game.PlaceId == 15532962292 then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/SolsRNG"))()
         sendNotification("Script Loaded", "Sol's RNG script has successfully loaded. Have fun!", 5)
+    elseif game.PlaceId == 9772878203 then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
+        sendNotification("Script Loaded", "Raise A Floppa 2 script has successfully loaded. Have fun!", 5)
     end
 else
     sendNotification("Unsupported Game", "This game is unsupported, and we'll make a universal script soon!", 5)

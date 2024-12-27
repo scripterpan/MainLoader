@@ -166,7 +166,7 @@ CheckButton.MouseButton1Click:Connect(function()
 
     -- Start countdown timer for supported games before destroying the UI (10 seconds)
     if success and gameInfo and supportedGames[placeID] then
-        for i = 10, 0, -1 do
+        for i = 5, 0, -1 do
             TimerLabel.Text = "Closing in: " .. i .. "s"
             task.wait(1)
         end

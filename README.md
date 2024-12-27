@@ -5,4 +5,4 @@ Supported game
 
 # More supported game soon!
 
-### Also i recommend to avoid using it, it may violated the terms of service of roblox
+#### This script is intended for use in controlled environments and may violate Roblox's Terms of Service. Use at your own risk!!

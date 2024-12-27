@@ -138,9 +138,18 @@ CheckButton.MouseButton1Click:Connect(function()
         if supportedGames[placeID] then  -- Check if the place ID is in the supported games list
             OutputLabel.Text = supportedGames[placeID] .. " is supported. Loading script..."
             task.wait(1)
+
+            -- Load the script for the game based on PlaceId
+            if placeID == 6243699076 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/TheMimic"))()
+            elseif placeID == 15532962292 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/SolsRNG"))()
+            elseif placeID == 9772878203 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
+            end
+
             OutputLabel.Text = supportedGames[placeID] .. " script is loaded, enjoy!"
             print(supportedGames[placeID] .. " script is running!")
-
         else
             OutputLabel.Text = gameInfo.Name .. " is an unsupported game."
             task.wait(1)

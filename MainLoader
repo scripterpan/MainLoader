@@ -104,7 +104,8 @@ TimerLabel.BackgroundTransparency = 1  -- Make label background fully transparen
 local supportedGames = {
     [6243699076] = "The Mimic",
     [15532962292] = "Sol's RNG",
-    [9772878203] = "Raise A Floppa 2"
+    [9772878203] = "Raise A Floppa 2",
+    [9921522947] = "RAF2 (Multiplayer)"
 }
 
 -- Check the current place ID and execute the script
@@ -146,6 +147,8 @@ CheckButton.MouseButton1Click:Connect(function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/SolsRNG"))()
             elseif placeID == 9772878203 then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
+            elseif placeID == 9921522947 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
             end
 
             OutputLabel.Text = supportedGames[placeID] .. " script is loaded, enjoy!"
@@ -154,7 +157,7 @@ CheckButton.MouseButton1Click:Connect(function()
             OutputLabel.Text = gameInfo.Name .. " is an unsupported game."
             task.wait(1)
             -- Start countdown timer before closing the UI (10 seconds for unsupported game)
-            for i = 10, 0, -1 do
+            for i = 7, 0, -1 do
                 TimerLabel.Text = "Closing in: " .. i .. "s"
                 task.wait(1)
             end

@@ -137,7 +137,7 @@ CheckButton.MouseButton1Click:Connect(function()
 
         -- Check if the game is supported
         if supportedGames[placeID] then  -- Check if the place ID is in the supported games list
-            OutputLabel.Text = supportedGames[placeID] .. " is supported. Loading script..."
+            OutputLabel.Text = supportedGames[placeID] .. " is supported \nLoading script..."
             task.wait(1)
 
             -- Load the script for the game based on PlaceId
@@ -154,10 +154,10 @@ CheckButton.MouseButton1Click:Connect(function()
             OutputLabel.Text = supportedGames[placeID] .. " script is loaded, enjoy!"
             print(supportedGames[placeID] .. " script is running!")
         else
-            OutputLabel.Text = gameInfo.Name .. " is an unsupported game."
+            OutputLabel.Text = gameInfo.Name .. " is an unsupported game \nloading universal script!"
             task.wait(1)
-            -- Start countdown timer before closing the UI (10 seconds for unsupported game)
-            for i = 7, 0, -1 do
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/Universal"))()
+            for i = 5, 0, -1 do
                 TimerLabel.Text = "Closing in: " .. i .. "s"
                 task.wait(1)
             end

@@ -105,7 +105,9 @@ local supportedGames = {
     [6243699076] = "The Mimic",
     [15532962292] = "Sol's RNG",
     [9772878203] = "Raise A Floppa 2",
-    [9921522947] = "RAF2 (Multiplayer)"
+    [9921522947] = "RAF2 (Multiplayer)",
+    [121308443347459] = "7DTL",
+    [132991738534170] = "SURVIVE THE JOB APPLICATION"
 }
 
 -- Check the current place ID and execute the script
@@ -151,6 +153,8 @@ CheckButton.MouseButton1Click:Connect(function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
             elseif placeID == 132991738534170 then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/JobApplication"))()
+            elseif placeID == 121308443347459 then
+                -- 7DTL
             end
 
             OutputLabel.Text = supportedGames[placeID] .. " script is loaded, enjoy!"

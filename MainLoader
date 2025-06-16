@@ -149,6 +149,8 @@ CheckButton.MouseButton1Click:Connect(function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
             elseif placeID == 9921522947 then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/RaiseAFloppa2"))()
+            elseif placeID == 132991738534170 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/scripterpan/scripterpan/refs/heads/main/JobApplication"))()
             end
 
             OutputLabel.Text = supportedGames[placeID] .. " script is loaded, enjoy!"

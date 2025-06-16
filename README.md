@@ -1,6 +1,7 @@
 # Supported game
-- Sol's RNG
-- The Mimic
+- Universal
+- 7 Days To Live (coming soon)
+- Survive Job Application
 - Raise A Floppa 2
 - PETAPETA
 
